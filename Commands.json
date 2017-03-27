@@ -1,0 +1,31 @@
+{
+  "Commands": [
+    {
+      "Command": "help",
+      "defaultOutput": "This is the help command which can be run by typing help.\n\nList of Commands:\n\nhelp\nload\nsave\nfiles\n",
+      "argsNum": 2,
+      "invalidArgs": "Usage: \nhelp \nhelp [command]",
+      "className": "HelpCommand",
+      "external": false,
+      "assembly": null
+    },
+    {
+      "Command": "load",
+      "defaultOutput": "This is the load commmand\nThis is used for loading previously saved files",
+      "argsNum": 2,
+      "invalidArgs": "Usage: \nload [Save Name]",
+      "className": "HelpCommand",
+      "external": false,
+      "assembly": null
+    },
+    {
+      "Command": "connect",
+      "defaultOutput": "This is the connect commmand\nThis can be used to connect to any ip address in your connections list",
+      "argsNum": 2,
+      "invalidArgs": "Usage: \nconnect",
+      "className": "ConnectCommand",
+      "external": false,
+      "assembly": null
+    }
+  ]
+    }
