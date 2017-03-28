@@ -1,14 +1,13 @@
 from cmd import Cmd
+import importlib
 import json
 from types import MethodType
-import inspect
-from curses import wrapper
 import os
 class MyPrompt(Cmd):
 
     def do_hello(self, args):
         """Says hello. If you provide a name, it will greet you with it."""
-        print(dir(self.__class__))
+        pass
 
     def postcmd(self, stop, line):
         if line == 'curses':
@@ -44,7 +43,6 @@ class MyPrompt(Cmd):
                     names.append(nom)
                 if nom[:3] == 'do_':
                     names.append(nom)
-            print(names)
             cmds_doc = []
             cmds_undoc = []
             help = {}
@@ -72,15 +70,20 @@ class MyPrompt(Cmd):
             self.print_topics(self.misc_header, list(help.keys()), 15, 80)
             self.print_topics(self.undoc_header, cmds_undoc, 15, 80)
 
-def create_command_funct(name, help):
+def create_command_funct(name, help, cmdMod):
     def do_cmd(self, args):
-        print("You ran" + inspect.stack()[0][3] + " command")
+        print("You ran " + cmdMod.__name__ + " command")
+        cmdMod.Run()
     do_cmd.__name__ = "do_" + name
     do_cmd.__doc__ = help
     return do_cmd
 
-def addfunct(name, help, prompt):
-    c = create_command_funct(name, help)
+def addfunct(name, help, className, prompt):
+    try:
+        cmdMod = importlib.import_module("commands." + className)
+    except ImportError:
+        return
+    c = create_command_funct(name, help, cmdMod)
     setattr(prompt, c.__name__, MethodType(c, prompt))
 
 if __name__ == '__main__':
@@ -90,7 +93,6 @@ if __name__ == '__main__':
     for i in data['Commands']:
         if i["Command"] == "help":
             continue
-        addfunct(i['Command'], i['defaultOutput'], prompt)
-    print(vars(prompt))
+        addfunct(i['Command'], i['defaultOutput'], i['className'], prompt)
     prompt.prompt = '> '
     prompt.cmdloop('Starting prompt...')

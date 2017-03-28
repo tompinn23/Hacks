@@ -14,7 +14,7 @@
       "defaultOutput": "This is the load commmand\nThis is used for loading previously saved files",
       "argsNum": 2,
       "invalidArgs": "Usage: \nload [Save Name]",
-      "className": "HelpCommand",
+      "className": "LoadCommand",
       "external": false,
       "assembly": null
     },
@@ -28,4 +28,4 @@
       "assembly": null
     }
   ]
-    }
+}
