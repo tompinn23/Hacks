@@ -23,9 +23,9 @@ class ConnectCommand():
             self.draw(stdscr)
             c = stdscr.getch()
             if c == curses.KEY_DOWN:
-                if not self.cur + 1 > len(ips) - 1: cur += 1
+                if not self.cur + 1 > len(self.ips) - 1: self.cur += 1
             elif c == curses.KEY_UP:
-                if not self.cur - 1 < 0: cur -= 1
+                if not self.cur - 1 < 0: self.cur -= 1
             elif c == curses.KEY_ENTER or c == 10 or c == 13:
                 return self.ips[self.cur]
             elif c == 27:

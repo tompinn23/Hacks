@@ -1,2 +1,2 @@
-py testcommand.py
+py term.py
 pause

@@ -71,19 +71,24 @@ class MyPrompt(Cmd):
             self.print_topics(self.undoc_header, cmds_undoc, 15, 80)
 
 def create_command_funct(name, help, cmdMod):
+    c = cmdMod()
     def do_cmd(self, args):
         print("You ran " + cmdMod.__name__ + " command")
-        cmdMod.Run()
+        c.Run()
     do_cmd.__name__ = "do_" + name
     do_cmd.__doc__ = help
     return do_cmd
 
 def addfunct(name, help, className, prompt):
+    #try:
+    cmdMod = importlib.import_module("commands." + className)
     try:
-        cmdMod = importlib.import_module("commands." + className)
+        cmdClass = getattr(cmdMod, className)
+    except AttributeError:
+        return
     except ImportError:
         return
-    c = create_command_funct(name, help, cmdMod)
+    c = create_command_funct(name, help, cmdClass)
     setattr(prompt, c.__name__, MethodType(c, prompt))
 
 if __name__ == '__main__':
