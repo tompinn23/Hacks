@@ -1,3 +1,4 @@
-from commands import ConnectCommand
+from commands.ConnectCommand import ConnectCommand
 
-ConnectCommand.Run()
+c = ConnectCommand()
+c.Run()
