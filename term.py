@@ -18,6 +18,14 @@ class MyPrompt(Cmd):
         print("Quitting.")
         raise SystemExit
 
+    def do_disclaimer(self, args):
+        print("""This is a work of fiction.
+Names, characters, places and incidents either are products
+of the author's imagination or are used fictitiously.
+Any resemblance to actual events or locales or persons,
+living or dead, is entirely coincidental.""")
+        input()
+    
     def do_help(self, arg):
         'List available commands with "help" or detailed help with "help cmd".'
         if arg:
@@ -100,4 +108,5 @@ if __name__ == '__main__':
             continue
         addfunct(i['Command'], i['defaultOutput'], i['className'], prompt)
     prompt.prompt = '> '
+    prompt.onecmd('disclaimer')
     prompt.cmdloop('Starting prompt...')
