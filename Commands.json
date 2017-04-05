@@ -1,31 +1,34 @@
 {
   "Commands": [
     {
-      "Command": "help",
-      "defaultOutput": "This is the help command which can be run by typing help.\n\nList of Commands:\n\nhelp\nload\nsave\nfiles\n",
-      "argsNum": 2,
-      "invalidArgs": "Usage: \nhelp \nhelp [command]",
-      "className": "HelpCommand",
-      "external": false,
-      "assembly": null
-    },
-    {
       "Command": "load",
-      "defaultOutput": "This is the load commmand\nThis is used for loading previously saved files",
-      "argsNum": 2,
+      "defaultOutput": "This is the load commmand\nThis is used for loading previously saved files.",
       "invalidArgs": "Usage: \nload [Save Name]",
-      "className": "LoadCommand",
-      "external": false,
-      "assembly": null
+      "className": "LoadCommand"
     },
     {
       "Command": "connect",
-      "defaultOutput": "This is the connect commmand\nThis can be used to connect to any ip address in your connections list",
-      "argsNum": 2,
+      "defaultOutput": "This is the connect commmand\nThis can be used to connect to any ip address in your connections list.",
       "invalidArgs": "Usage: \nconnect",
-      "className": "ConnectCommand",
-      "external": false,
-      "assembly": null
+      "className": "ConnectCommand"
+    },
+	{
+      "Command": "ipinfo",
+      "defaultOutput": "This is the ipinfo commmand\nThis can be used to add any ip address to your local database.",
+      "invalidArgs": "Usage: \nipinfo [IP Address]",
+      "className": "IPInfoCommand"
+    },
+	{
+      "Command": "dir",
+      "defaultOutput": "This is the dir commmand\nThis can be used to list files in the current directory.",
+      "invalidArgs": "Usage: \ndir",
+      "className": "DirCommand"    
+    },
+	{
+      "Command": "logs",
+      "defaultOutput": "This is the log commmand\nThis can be used to view the logs of the computer you are connected to.",
+      "invalidArgs": "Usage: \nlog",
+      "className": "LogCommand"    
     }
   ]
 }

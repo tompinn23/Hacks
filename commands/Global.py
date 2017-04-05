@@ -1,1 +1,9 @@
-ips = ['1.1.1.1', '1.1.1.2','1.1.1.3']
+MyIps = {'10.66.66.66': 'Net Information Center'}
+#MyIps = {}
+AllIps = []
+AllCompanies = {}
+AllNames = {}
+name = ''
+PastIPS = []
+Computers = []
+myIp = '127.0.0.1'
